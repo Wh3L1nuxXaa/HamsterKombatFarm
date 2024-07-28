@@ -16,10 +16,13 @@ public class Main {
         int tapcount = sc.nextInt();
         System.out.println("Enter cooldown (ms)");
         int time = sc.nextInt();
-        while (true) {
-            long unixTime = System.currentTimeMillis() / 1000L;
-            System.out.println("[Click] Sended response: " + HTTPConnection.sendRequest(maxEnerg, tapcount, unixTime, token));
-            Thread.sleep(time);
-        }
+        onClick(maxEnerg, tapcount, time, token);
+    }
+
+    public static void onClick(int maxEnerg, int tapcount, long time, String token) throws InterruptedException, IOException {
+        long unixTime = System.currentTimeMillis() / 1000L;
+        System.out.println("[Click] Sended response: " + HTTPConnection.sendRequest(maxEnerg, tapcount, unixTime, token));
+        Thread.sleep(time);
+        onClick(maxEnerg, tapcount, time, token);
     }
 }
